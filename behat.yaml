@@ -1,0 +1,23 @@
+default:
+  suites:
+    my_suite:
+      contexts:
+        - FeatureContext
+        - Behat\MinkExtension\Context\MinkContext
+
+  extensions:
+    Behat\MinkExtension:
+      base_url: 'http://public.local'
+      default_session: 'default'
+      sessions:
+        default:
+          goutte: ~
+        js_session:
+          selenium2:
+            wd_host: 'http://127.0.0.1:4444/wd/hub'
+      browser_name: chrome
+
+    Behat\Symfony2Extension:
+        kernel:
+            bootstrap: features/bootstrap/bootstrap.php
+            class: App\Kernel
