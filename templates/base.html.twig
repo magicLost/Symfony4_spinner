@@ -1,12 +1,97 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
+<!doctype html>
+
+{% set locale = app.session.get("_locale") %}
+
+<html lang="en">
+<head>
+    <title>{% block title %}Welcome to my site{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block stylesheets %}
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/style_1.css') }}">
+
+    {% endblock %}
+</head>
+<body>
+
+<div class="container-fluid fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded ">
+        <a class="navbar-brand" href="#">
+            <img src="{{ asset('images/icon_yellow.png') }}"  alt="icon" width="40px" height="40px">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-start" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">King of the Hill</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Comments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact us</a>
+                </li>
+
+
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        En
+                    </a>
+                    <div class="dropdown-menu bg-dark " aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item text-light" href="#">En</a>
+                        <a class="dropdown-item text-light" href="#">Ru</a>
+                    </div>
+                </li>
+
+
+            </ul>
+
+        </div>
+    </nav>
+</div>
+
+
+<div class="container rounded" id="wrapper" >
+
+    <div class="row">
+        <div class="col-lg-12">
+            {% for msg in app.session.flashBag.get('success')  %}
+                <div class="alert alert-success">
+                    {{ msg }}
+                </div>
+            {%  endfor %}
+        </div>
+
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+    </div>
+
+</div>
+<div class="container ">
+    <footer class="blockquote-footer w-50 m-auto text-dark text-center pt-3">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+</div>
+
+
+{% block javascripts %}
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/main_1.js') }}"></script>
+
+
+{% endblock %}
+</body>
 </html>

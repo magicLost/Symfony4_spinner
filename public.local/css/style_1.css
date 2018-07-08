@@ -1,0 +1,23 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    color: rgb(225, 223, 177);
+    font-family: "MV Boli";
+    background:  url('../images/back.jpg') no-repeat top fixed black;
+    //background-color: black;
+
+}
+#wrapper{
+    display: none;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow : 0 0 10px rgba(225, 223, 177, 0.4);
+    padding-top: 80px;
+}
+
+.navbar-item a{
+    color: rgb(225, 223, 177);
+    font-family: "MV Boli";
+}
+
