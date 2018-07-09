@@ -1,2 +1,16 @@
+#navbar links
+Navbar.homeLink: Главная
+Navbar.kingOfTheHill: Царь горы
+Navbar.comments: Отзывы
+Navbar.contact us: Контакты
+
+
 #Homepage
-Homepage.title: Добро пожаловать на главную страницу.
+Homepage.title: CanI? - испытай себя в бесплатной онлайн игре.
+Homepage.pageTitle: Добро пожаловать на главную страницу.
+Homepage.infoAboutSiteAndGame: Какая-то информация о сайте и игре.
+Homepage.playLink: Играть в игру
+
+#Comments
+Comments.pageTitle: Здесь можно написать отзыв об игре.
+Comments.title: Отзывы.

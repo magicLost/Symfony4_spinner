@@ -1,2 +1,15 @@
+#navbar links
+Navbar.homeLink: Home
+Navbar.kingOfTheHill: King of the Hill
+Navbar.comments: Comments
+Navbar.contact us: Contact us
+
 #Homepage
-Homepage.title: Welcome to home page.
+Homepage.title: CanI? - test yourself in free online fan game
+Homepage.pageTitle: Welcome to home page.
+Homepage.infoAboutSiteAndGame: Some information about site and game.
+Homepage.playLink: Play game
+
+#Comments
+Comments.pageTitle: Comment our game.
+Comments.title: Comments.

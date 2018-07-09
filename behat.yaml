@@ -1,9 +1,11 @@
 default:
   suites:
-    my_suite:
+    translation:
       contexts:
         - FeatureContext
         - Behat\MinkExtension\Context\MinkContext
+        - TranslationContext
+      paths: ['%paths.base%/features/translation']
 
   extensions:
     Behat\MinkExtension:

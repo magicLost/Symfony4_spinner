@@ -6,21 +6,23 @@
 
     <div class="col-lg-12">
 
-        <h5 class="text-center">{% trans %}Homepage.title{% endtrans %}</h5>
+        <h5 class="text-center">{% trans %}Homepage.pageTitle{% endtrans %}</h5>
 
     </div>
 
     <div class="col-lg-12">
 
         <p>
-            Some information about site and game.
+            {% trans %}Homepage.infoAboutSiteAndGame{% endtrans %}
         </p>
 
     </div>
 
     <div class="col-lg-12 text-center">
 
-        <a href="" class="">Play game</a>
+        <a href="" class="">{% trans %}Homepage.playLink{% endtrans %}</a>
+
+        <p>{{ dump(app.request.attributes.get("_route")) }}</p>
 
     </div>
 

@@ -2,6 +2,43 @@
 
 {% set locale = app.session.get("_locale") %}
 
+{% set route_name = app.request.attributes.get("_route") %}
+
+{% if route_name == "home_ru" %}
+
+    {% set current_locale = "ru" %}
+    {% set next_locale = "en" %}
+    {% set locale_path = path('home_en', {'_locale': 'en'}) %}
+    {% set home_route_name = path(route_name) %}
+
+{% elseif app.request.attributes.get("_route") == "home_en" %}
+
+    {% set current_locale = "en" %}
+    {% set next_locale = "ru" %}
+    {% set locale_path = path('home_ru') %}
+    {% set home_route_name = path(route_name) %}
+
+
+{% else %}
+
+    {% set current_locale = app.request.locale %}
+
+    {% if current_locale == 'ru' %}
+
+        {% set next_locale = "en" %}
+        {% set locale_path = path(route_name, {"_locale": 'en'}) %}
+        {% set home_route_name = path('home_ru') %}
+
+    {% else %}
+
+        {% set next_locale = "ru" %}
+        {% set locale_path = path(route_name, {"_locale": 'ru'}) %}
+        {% set home_route_name = path('home_en') %}
+
+    {% endif %}
+
+{% endif %}
+
 <html lang="en">
 <head>
     <title>{% block title %}Welcome to my site{% endblock %}</title>
@@ -18,7 +55,7 @@
 
 <div class="container-fluid fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded ">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ home_route_name }}">
             <img src="{{ asset('images/icon_yellow.png') }}"  alt="icon" width="40px" height="40px">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,19 +64,17 @@
         <div class="collapse navbar-collapse justify-content-start" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ home_route_name }}">{% trans %}Navbar.homeLink{% endtrans %} <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">King of the Hill</a>
+                    <a class="nav-link" href="#">{% trans %}Navbar.kingOfTheHill{% endtrans %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Comments</a>
+                    <a class="nav-link" href="{{ path("comments_list") }}">{% trans %}Navbar.comments{% endtrans %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact us</a>
+                    <a class="nav-link" href="#">{% trans %}Navbar.contact us{% endtrans %}</a>
                 </li>
-
-
             </ul>
 
             <ul class="navbar-nav ml-auto">
@@ -48,11 +83,10 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        En
+                       {{ current_locale }}
                     </a>
                     <div class="dropdown-menu bg-dark " aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item text-light" href="#">En</a>
-                        <a class="dropdown-item text-light" href="#">Ru</a>
+                        <a class="dropdown-item text-light" href="{{ locale_path }}">{{ next_locale }}</a>
                     </div>
                 </li>
 
