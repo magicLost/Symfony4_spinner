@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% block fos_user_content %}{% endblock %}
+
+{% endblock body %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script type="text/javascript">
+
+        const form = document.getElementsByClassName('needs-validation')[0];
+
+        //console.log(form);
+        // Loop over them and prevent submission
+        form.addEventListener('submit', function (event) {
+
+            console.log('start');
+            //event.preventDefault();
+
+            if (form.checkValidity() === false) {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                console.log('not valid');
+
+            }
+
+            form.classList.add('was-validated');
+
+        }, false);
+
+
+
+    </script>
+
+{% endblock javascripts %}

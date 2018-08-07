@@ -27,5 +27,9 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+    App\EventListener\FosSecurity\ResettingsPasswordSubscriber:
+        arguments:
+          $retryTtl: '%fos_user.resetting.retry_ttl%'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

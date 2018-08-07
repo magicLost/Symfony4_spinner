@@ -18,6 +18,23 @@
     {% set locale_path = path('home_ru') %}
     {% set home_route_name = path(route_name) %}
 
+{% elseif route_name == "fos_user_resetting_reset" %}
+
+    {% set current_locale = app.request.locale %}
+
+    {% if current_locale == 'ru' %}
+
+        {% set next_locale = "en" %}
+        {% set locale_path = path("home_en", {"_locale": 'en'}) %}
+        {% set home_route_name = path('home_ru') %}
+
+    {% else %}
+
+        {% set next_locale = "ru" %}
+        {% set locale_path = path("home_ru") %}
+        {% set home_route_name = path('home_en') %}
+
+    {% endif %}
 
 {% else %}
 
@@ -78,8 +95,31 @@
             </ul>
 
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
+                <li class="nav-item dropdown">
+                    {#{% if is_granted('ROLE_USER') %}
+                        <a class="nav-link" href="{{ path('fos_user_security_logout') }}">{% trans %} Navbar.logoutLink {% endtrans %}</a>
+                    {% else %}
+                        <a class="nav-link" href="{{ path('fos_user_security_login') }}">{% trans %} Navbar.loginLink {% endtrans %}</a>
+                    {% endif %}#}
+
+                    {% if is_granted('ROLE_USER') %}
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ app.user.username }}
+                        </a>
+                        <div class="dropdown-menu bg-dark " aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item text-light" href="{{ path('fos_user_profile_show') }}">{{ 'Navbar.profileLink'|trans  }}</a>
+                            <a class="dropdown-item text-light" href="{{ path('fos_user_security_logout') }}">{{ 'Navbar.logoutLink'|trans  }}</a>
+                        </div>
+                    {% else %}
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ 'Navbar.accountLink'|trans }}
+                        </a>
+                        <div class="dropdown-menu bg-dark text-center " aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item text-light" href="{{ path('fos_user_security_login') }}">{{ 'Navbar.loginLink'|trans }}</a>
+                            <a class="dropdown-item text-light" href="{{ path('fos_user_registration_register') }}">{{ 'Navbar.registerLink'|trans  }}</a>
+                            <a class="dropdown-item text-light" href="{{ path('fos_user_resetting_request') }}">{{ 'Navbar.forgetpassLink'|trans  }}</a>
+                        </div>
+                    {% endif %}
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

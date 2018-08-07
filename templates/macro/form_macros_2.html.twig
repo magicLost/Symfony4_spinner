@@ -1,0 +1,64 @@
+{% macro print_form_row(form_row, dark) %}
+
+    {% if dark %}
+
+        {% set prepend_classes = "bg-dark text-warning" %}
+        {% set input_classes = "bg-dark text-warning" %}
+
+    {% else %}
+
+        {% set prepend_classes = "bg-primary text-white" %}
+        {% set input_classes = "bg-light" %}
+
+    {% endif %}
+
+    <div class="form-group">
+
+        {% if not form_row.vars.valid %}
+            {% set form_classes = "form-control is-invalid " %}
+        {% else %}
+            {% set form_classes = 'form-control ' %}
+        {% endif %}
+
+        {{ form_label(form_row, null, {
+            'label_attr': {
+                'class': 'sr-only'
+            }
+        }) }}
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text {{ prepend_classes }}">{{ form_row.vars.label }}</div>
+            </div>
+            {{ form_widget(form_row, {
+                'attr': {
+                    'class': form_classes ~ input_classes
+                }
+            }) }}
+
+            {% if not form_row.vars.valid %}
+
+                {% for error in form_row.vars.errors %}
+                    {% if loop.first %}
+                        <div class="invalid-feedback pl-5">
+                            <p> {{ error.message }}</p>
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+
+            {% else %}
+
+                <div class="invalid-feedback pl-5">
+
+                </div>
+
+            {% endif %}
+
+
+
+
+        </div>
+
+    </div>
+
+{% endmacro %}

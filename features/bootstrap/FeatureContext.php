@@ -1,9 +1,6 @@
 <?php
 
 use Behat\Behat\Context\Context;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\KernelInterface;
 use Behat\MinkExtension\Context\RawMinkContext;
 
 /**
@@ -19,6 +16,14 @@ class FeatureContext extends RawMinkContext implements Context
     public function __construct()
     {
 
+    }
+
+    /**
+     * @Given wait :seconds seconds
+     */
+    public function waitSeconds($seconds)
+    {
+        $this->getSession()->wait($seconds * 1000, false);
     }
 
 

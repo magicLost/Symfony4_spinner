@@ -1,0 +1,115 @@
+group:
+    edit:
+        submit: 'Update group'
+    show:
+        name: 'Group name'
+    new:
+        submit: 'Create group'
+    flash:
+        updated: 'The group has been updated.'
+        created: 'The group has been created.'
+        deleted: 'The group has been deleted.'
+security:
+    login:
+        username: Username
+        password: Password
+        remember_me: 'Remember me'
+        submit: 'Log in'
+        register_link: Registration
+        forgetpass_link: 'Forget password?'
+        username_placeholder: 'Enter your name or E-mail'
+        password_placeholder: 'Enter your password'
+
+        js_error_message: 'Bad, bad data'
+        auth_error_message: 'Bad, bad data'
+
+profile:
+    show:
+        title: 'My account'
+        username: Username
+        email: Email
+        changepassLink: 'Change password'
+    edit:
+        submit: Update
+    flash:
+        updated: 'The profile has been updated.'
+
+change_password:
+    submit: 'Change password'
+    flash:
+        success: 'The password has been changed.'
+
+registration:
+    check_email: |
+        An email has been sent to %email%. It contains an activation link you must click to activate your account.
+    confirmed: 'Congrats %username%, your account is now activated.'
+    back: 'Back to the originating page.'
+    submit: Register
+    flash:
+        user_created: 'The user has been created successfully.'
+    email:
+        subject: 'Welcome %username%!'
+        message: |
+            Hello %username%!
+
+            To finish activating your account - please visit %confirmationUrl%
+
+            This link can only be used once to validate your account.
+
+            Regards,
+            the Team.
+    js_errors:
+        username:
+            blank: The field should not be blank
+            short: The username must be at least 2 characters long.
+            long: Max length - 45 characters
+            regex: 'Do not use spec chars except for _ -'
+        email:
+            blank: The field should not be blank
+            regex: The email address should look like name@domain.ru(com)
+        password:
+            blank: The field should not be blank
+            short: The password must be at least 6 characters long.
+            regex: Use spec chars and uppercase to strengthen the password
+
+
+resetting:
+    check_email: |
+        An email has been sent. It contains a link you must click to reset your password.
+
+        If you don't get an email check your spam folder or try again.
+
+    already_send_email: 'You can only request a new email %tokenLifetime%  minutes after first request.'
+    request:
+        username: 'Username or email address'
+        submit: 'Reset password'
+    reset:
+        submit: 'Change password'
+    flash:
+        success: 'The password has been reset successfully.'
+    email:
+        subject: 'Reset Password'
+        message: |
+            Hello %username%!
+
+            To reset your password - please visit %confirmationUrl%
+
+            Regards,
+            the Team.
+
+# Global strings
+layout:
+    logout: 'Log out'
+    login: 'Log in'
+    register: Register
+    logged_in_as: 'Logged in as %username%'
+
+form:
+    group_name: 'Group name'
+    username: Username
+    email: Email
+    current_password: 'Current password'
+    password: Password
+    password_confirmation: 'Repeat password'
+    new_password: 'New password'
+    new_password_confirmation: 'Repeat new password'

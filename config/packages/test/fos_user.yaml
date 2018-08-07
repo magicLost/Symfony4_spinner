@@ -1,0 +1,4 @@
+fos_user:
+  resetting:
+    retry_ttl: 10
+    token_ttl: 12

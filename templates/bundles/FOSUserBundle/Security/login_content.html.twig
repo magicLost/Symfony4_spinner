@@ -1,0 +1,58 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="col-lg-12 pt-5">
+
+
+    <form class="needs-validation" action="{{ path("fos_user_security_check") }}" method="post" novalidate>
+        <div class="form-row align-items-center ">
+            {% if csrf_token %}
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            {% endif %}
+            <div class="col-md-12">
+                <label class="sr-only" for="validationCustomUsername">{{ 'security.login.username'|trans }}</label>
+                <label class="sr-only" for="inlineFormInputGroupUsername">{{ 'security.login.password'|trans }}</label>
+                <label class="sr-only" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-dark text-white" id="inputGroupPrepend">{{ 'security.login.username'|trans }}</span>
+                    </div>
+                    <input type="text" class="form-control" id="validationCustomUsername" name="_username" placeholder="{{ 'security.login.username_placeholder'|trans }}" value="{{ last_username }}" aria-describedby="inputGroupPrepend" required>
+                    <div class="input-group-append">
+                        <div class="input-group-text bg-dark text-white">{{ 'security.login.password'|trans }}</div>
+                    </div>
+                    <input type="password" class="form-control" name="_password" id="inlineFormInputGroupUsername" placeholder="{{ 'security.login.password_placeholder'|trans }}" required>
+                    <div class="input-group-append">
+                        <div class="input-group-text bg-dark text-white">{{ 'security.login.remember_me'|trans }}</div>
+                    </div>
+                    <select id="remember_me" name="_remember_me" class="">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                    <button type="submit" id="_submit" class="btn btn-primary input-group-append">{{ 'security.login.submit'|trans }}</button>
+                    <div class="invalid-feedback text-center">
+                        <ul>
+                            {#
+                            {% for error in 'security.login.js_error_message' %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                            #}
+                            {{ 'security.login.js_error_message'|trans }}
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+
+    {% if error %}
+        <!--div class="text-danger text-center"><p>{#{{ error.messageKey|trans(error.messageData, 'security') }}#} | </p> </div-->
+        <div class="text-danger text-center"><p>{{ 'security.login.auth_error_message'|trans }}</p></div>
+    {% endif %}
+
+</div>
+<div class="col-lg-12 p-3 text-center">
+    <a class="text-warning" href="{{ path("fos_user_registration_register") }}">{{ 'security.login.register_link'|trans  }}</a> |
+    <a class="text-warning" href="{{ path("fos_user_resetting_request") }}">{{ 'security.login.forgetpass_link'|trans  }}</a>
+</div>

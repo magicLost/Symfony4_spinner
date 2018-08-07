@@ -1,0 +1,56 @@
+{% macro print_fos_register_form_row(form_row, invalidMessages) %}
+
+    <div class="form-group">
+
+        {% if not form_row.vars.valid %}
+            {% set form_classes = "form-control is-invalid " %}
+        {% else %}
+            {% set form_classes = 'form-control ' %}
+        {% endif %}
+
+        {{ form_label(form_row) }}
+
+        {{ form_widget(form_row, {
+            'attr': {
+                'class': 'form-control bg-dark text-warning'
+            }
+        }) }}
+
+        {% if not form_row.vars.valid %}
+
+            {% for error in form_row.vars.errors %}
+                {% if loop.first %}
+                    <div class="text-danger pl-5">
+                        <ul>
+                            <li> {{ error.message }}</li>
+                        </ul>
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+
+        {% else %}
+
+            {% if invalidMessages %}
+
+                <div class="invalid-feedback pl-5">
+
+                    <ul>
+                        {% for message in invalidMessages %}
+
+                            <li>{{ message }}</li>
+
+                        {% endfor %}
+                    </ul>
+
+
+                </div>
+
+            {% endif %}
+
+        {% endif %}
+
+
+    </div>
+
+{% endmacro  %}

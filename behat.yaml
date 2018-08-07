@@ -6,7 +6,13 @@ default:
         - Behat\MinkExtension\Context\MinkContext
         - TranslationContext
       paths: ['%paths.base%/features/translation']
-
+    auth:
+      contexts:
+        - FeatureContext
+        - Behat\MinkExtension\Context\MinkContext
+        - TranslationContext
+        - AuthContext
+      paths: ['%paths.base%/features/auth']
   extensions:
     Behat\MinkExtension:
       base_url: 'http://public.local'

@@ -1,0 +1,29 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% import 'macro/fos_form_row.html.twig' as macro  %}
+
+<div class="col-lg-12">
+
+    {{ form_start(
+        form,
+        {
+            'method': 'post',
+            'action': path('fos_user_resetting_reset', {'token': token}),
+            'attr': {'class': 'fos_user_resetting_reset needs-validation', 'novalidate': 'novalidate'}
+        }
+    )  }}
+
+    {{ macro.print_fos_register_form_row(form.plainPassword.first) }}
+    {{ macro.print_fos_register_form_row(form.plainPassword.second) }}
+
+
+    <div>
+        <input class="btn btn-primary btn-block" formnovalidate type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
+    </div>
+
+    {{ form_end(form) }}
+
+</div>
+
+
+

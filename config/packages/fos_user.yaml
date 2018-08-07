@@ -1,0 +1,15 @@
+fos_user:
+  db_driver: orm
+  firewall_name: main
+  user_class: App\Entity\Auth\User
+  from_email:
+    address: "hello@sender.com"
+    sender_name: "Wonder postman"
+
+  registration:
+    confirmation:
+        enabled: true
+
+  resetting:
+    retry_ttl: 120
+    token_ttl: 130

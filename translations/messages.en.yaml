@@ -1,15 +1,24 @@
 #navbar links
-Navbar.homeLink: Home
-Navbar.kingOfTheHill: King of the Hill
-Navbar.comments: Comments
-Navbar.contact us: Contact us
+Navbar:
+    homeLink: Home
+    kingOfTheHill: King of the Hill
+    comments: Comments
+    contact us: Contact us
+    accountLink: My Account
+    loginLink: Login
+    registerLink: Registration
+    forgetpassLink: Forget password?
+    logoutLink: Logout
+    profileLink: Account Settings
 
 #Homepage
-Homepage.title: CanI? - test yourself in free online fan game
-Homepage.pageTitle: Welcome to home page.
-Homepage.infoAboutSiteAndGame: Some information about site and game.
-Homepage.playLink: Play game
+Homepage:
+    title: CanI? - test yourself in free online fan game
+    pageTitle: Welcome to home page.
+    infoAboutSiteAndGame: Some information about site and game.
+    playLink: Play game
 
 #Comments
-Comments.pageTitle: Comment our game.
-Comments.title: Comments.
+Comments:
+    pageTitle: Comment our game.
+    title: Comments.
