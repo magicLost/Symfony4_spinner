@@ -1,5 +1,7 @@
 <!doctype html>
 
+
+{#
 {% set locale = app.session.get("_locale") %}
 
 {% set route_name = app.request.attributes.get("_route") %}
@@ -55,6 +57,28 @@
     {% endif %}
 
 {% endif %}
+#}
+
+
+{% set route_name = app.request.attributes.get("_route") %}
+{% set path_info = app.request.pathInfo %}
+
+{% set current_locale = app.request.locale %}
+
+{% if current_locale == 'ru' %}
+
+    {% set next_locale = "en" %}
+    {% set change_locale_path = path("change_locale", {'path': path_info}) %}
+    {% set home_route_name = path('home_ru') %}
+
+{% else %}
+
+    {% set next_locale = "ru" %}
+    {% set change_locale_path = path("change_locale", {'path': path_info}) %}
+    {% set home_route_name = path('home_en') %}
+
+{% endif %}
+
 
 <html lang="en">
 <head>
@@ -126,7 +150,7 @@
                        {{ current_locale }}
                     </a>
                     <div class="dropdown-menu bg-dark " aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item text-light" href="{{ locale_path }}">{{ next_locale }}</a>
+                        <a class="dropdown-item text-light" href="{{ change_locale_path }}">{{ next_locale }}</a>
                     </div>
                 </li>
 

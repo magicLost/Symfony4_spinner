@@ -57,9 +57,10 @@ class SecurityTargetPath
     public function isSavingReferer(string $referer) : bool
     {
 
-        foreach($this->security_referer as $value)
+        foreach($this->security_referer as $referer_route)
         {
-            if($referer === $this->router->generate($value, [], UrlGeneratorInterface::ABSOLUTE_URL))
+            //if($referer === $this->router->generate($referer_route, ['_locale' => 'ru'], UrlGeneratorInterface::ABSOLUTE_URL) || $referer === $this->router->generate($referer_route, ['_locale' => 'en'], UrlGeneratorInterface::ABSOLUTE_URL))
+            if($referer === $this->router->generate($referer_route, ['_locale' => 'ru'], UrlGeneratorInterface::ABSOLUTE_URL))
             {
                 return false;
             }
@@ -73,7 +74,8 @@ class SecurityTargetPath
 
         foreach($this->security_uri as $value)
         {
-            if($uri === $this->router->generate($value))
+            //if($uri === $this->router->generate($value, ['_locale' => 'ru']) || $uri === $this->router->generate($value, ['_locale' => 'en']))
+            if($uri === $this->router->generate($value, ['_locale' => 'ru']))
             {
                 return true;
             }

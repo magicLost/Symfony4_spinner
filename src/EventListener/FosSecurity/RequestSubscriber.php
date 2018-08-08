@@ -8,6 +8,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use Symfony\Component\Security\Http\SecurityEvents;
 
 class RequestSubscriber implements EventSubscriberInterface
 {
@@ -36,15 +37,15 @@ class RequestSubscriber implements EventSubscriberInterface
             return;
         }
 
-        dump("login uri");
+        //dump("login uri");
         //dump($event->getRequest()->getRequestUri());
         //dump($this->router->generate("fos_user_security_login"));
 
         $referer = ($_SERVER['HTTP_REFERER']) ?? '';
-        dump($referer);
-        dump($this->securityTargetPath->isSavingReferer($referer));
+        //dump($referer);
+        //dump($this->securityTargetPath->isSavingReferer($referer));
         $this->securityTargetPath->saveReferer($referer, $event->getRequest());
-        dump($this->securityTargetPath->getRedirectUri($request));
+        //dump($this->securityTargetPath->getRedirectUri($request));
     }
 
     public static function getSubscribedEvents()

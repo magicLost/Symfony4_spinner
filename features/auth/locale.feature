@@ -3,5 +3,6 @@ Feature:
   As a user
   I want to have a demo scenario
 
-#check translation and change locale
+#check change locale in check_email page
+#check change locale in check_email page
 #check locale after bad login

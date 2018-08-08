@@ -23,6 +23,7 @@
         <a href="" class="">{% trans %}Homepage.playLink{% endtrans %}</a>
 
         <p>{{ dump(app.request.attributes.get("_route")) }}</p>
+        <p>{{ dump(app.request.locale) }}</p>
 
     </div>
 
