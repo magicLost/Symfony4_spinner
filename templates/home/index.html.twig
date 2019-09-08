@@ -20,7 +20,7 @@
 
     <div class="col-lg-12 text-center">
 
-        <a href="" class="">{% trans %}Homepage.playLink{% endtrans %}</a>
+        <a href="{{ path('spinner_home') }}" class="">{% trans %}Homepage.playLink{% endtrans %}</a>
 
         <p>{{ dump(app.request.attributes.get("_route")) }}</p>
         <p>{{ dump(app.request.locale) }}</p>

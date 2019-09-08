@@ -1,0 +1,25 @@
+###> symfony/framework-bundle ###
+/.env
+/public/bundles/
+/public.local/js/lib/
+/public.local/images/
+/public.local/fonts/
+/public.local/css/jquery_ui
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/webpack-encore-pack ###
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-pack ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+###> behat/symfony2-extension ###
+behat.yml
+###< behat/symfony2-extension ###

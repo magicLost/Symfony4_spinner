@@ -22,4 +22,12 @@ Homepage:
 Comments:
     pageTitle: Здесь можно написать отзыв об игре.
     title: Отзывы.
-
+    showMoreCommentsButtonTitle: 'Показать еще...'
+    showAnswerCommentsButtonTitle: 'Показать ответы'
+    hideAnswerCommentsButtonTitle: 'Скрыть ответы'
+    sendButtonValue: 'Отправить'
+    replyButtonValue: 'Ответить'
+    replyFormPlaceholder: 'Оставить комментарий...'
+    registerLinkTitle: 'Зарегистрируйтесь'
+    loginLinkTitle: 'Войдите в свой аккаунт'
+    toCommentText: 'дабы оставить комментарий.'

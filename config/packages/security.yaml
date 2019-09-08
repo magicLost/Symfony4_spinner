@@ -44,3 +44,4 @@ security:
          - { path: ^/(en|ru)/login$, allow_if: 'not has_role("ROLE_USER")' }
          - { path: ^/(en|ru)/register$, allow_if: 'not has_role("ROLE_USER")' }
          - { path: ^/(en|ru)/resetting, allow_if: 'not has_role("ROLE_USER")' }
+

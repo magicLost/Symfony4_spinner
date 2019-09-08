@@ -4,6 +4,7 @@ namespace App\Security;
 
 
 use App\Service\SecurityTargetPath;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -31,6 +32,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      * @var SecurityTargetPath
      */
     private $securityTargetPath;
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
 
     public function __construct(
         FormFactoryInterface $formFactory,
@@ -38,7 +43,9 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         RouterInterface $router,
         UserPasswordEncoderInterface $passwordEncoder,
         CsrfTokenManagerInterface $csrfTokenManager,
-        SecurityTargetPath $securityTargetPath
+        SecurityTargetPath $securityTargetPath,
+
+        LoggerInterface $logger
     )
     {
         $this->formFactory = $formFactory;
@@ -47,11 +54,28 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         $this->passwordEncoder = $passwordEncoder;
         $this->csrfTokenManager = $csrfTokenManager;
         $this->securityTargetPath = $securityTargetPath;
+        $this->logger = $logger;
     }
 
     public function supports(Request $request)
     {
+        $this->logger->warning("LoginFormAuthenticator | supports " );
+
+
         //dump("login guard");
+
+        /*$pathInfo = $request->getPathInfo();
+        $routeGenerate = $this->router->generate("fos_user_security_check");
+
+        if($request->getPathInfo() === $this->router->generate("fos_user_security_check") && $request->isMethod('post'))
+        {
+            $this->logger->warning("Welcome | pathInfo == ".$pathInfo." | routeGenerae == ".$routeGenerate );
+        }
+        else{
+            $this->logger->warning("Welcome | pathInfo == ".$pathInfo." | routeGenerae == ".$routeGenerate );
+
+        }*/
+
         return $request->getPathInfo() === $this->router->generate("fos_user_security_check") && $request->isMethod('post');
     }
 
@@ -62,6 +86,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         $password = $request->request->get("_password");
         $token = $request->request->get("_csrf_token");
 
+        $this->logger->warning("LoginFormAuthenticator | getCredentials | name == ".$username." | password == ".$password." | token == ".$token );
 
         if(false == $this->csrfTokenManager->isTokenValid(new CsrfToken('authenticate', $token)))
         {
@@ -81,6 +106,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
+        $this->logger->warning("LoginFormAuthenticator | getUser" );
+
         $userName = $credentials['_username'];
 
         if(null === $userName)
@@ -93,6 +120,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     public function checkCredentials($credentials, UserInterface $user)
     {
+        $this->logger->warning("LoginFormAuthenticator | checkCredentials" );
+
         $password = $credentials['_password'];
 
         if($this->passwordEncoder->isPasswordValid($user, $password))

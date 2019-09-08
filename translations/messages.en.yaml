@@ -22,3 +22,12 @@ Homepage:
 Comments:
     pageTitle: Comment our game.
     title: Comments.
+    showMoreCommentsButtonTitle: 'Show more'
+    showAnswerCommentsButtonTitle: 'Show answers'
+    hideAnswerCommentsButtonTitle: 'Hide answers'
+    sendButtonValue: 'Send'
+    replyButtonValue: 'Reply'
+    replyFormPlaceholder: 'Add comment...'
+    registerLinkTitle: 'Register'
+    loginLinkTitle: 'Login'
+    toCommentText: 'to comment...'

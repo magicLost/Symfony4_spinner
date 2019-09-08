@@ -1,0 +1,57 @@
+
+
+{% block title %}{% trans %}Play spinner game.{% endtrans %}{% endblock %}
+
+{% block stylesheets %}
+
+
+    <link rel="shortcut icon" href="{{ asset('TemplateData/favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('TemplateData/style.css') }}" />
+
+{% endblock stylesheets %}
+
+
+{% block body %}
+
+    <div class="col-lg-12">
+
+        <h5 class="text-center">{% trans %}Lets play.{% endtrans %}</h5>
+
+    </div>
+
+    <div class="col-lg-12">
+
+        <div class="webgl-content">
+            <div id="gameContainer" style="width: 960px; height: 600px"></div>
+            <div class="footer">
+                <div class="webgl-logo"></div>
+                <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+                <div class="title">Spinner_challenge</div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+
+    <script type="text/javascript" src="{{ asset('TemplateData/UnityProgress.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('Build/UnityLoader.js') }}" ></script>
+
+    <script type="text/javascript">
+
+        var gameInstance = UnityLoader.instantiate("gameContainer", "Build/AuthWinMenu_v1.json", {onProgress: UnityProgress});
+
+    </script>
+
+
+
+
+{% endblock javascripts %}
+
